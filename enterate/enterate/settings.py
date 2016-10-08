@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,10 +75,11 @@ WSGI_APPLICATION = 'enterate.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 #Configuración de la base de datos con Django y Postgresql.
+# Para iniciar sesión en la BD de polls: psql -h localhost -U fernandobperezm -d polls
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'enterate',
+        'NAME': 'polls',
         'USER': 'ubuntu',
         'PASSWORD': '2306anayfer',
     }
