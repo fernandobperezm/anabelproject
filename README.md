@@ -27,4 +27,8 @@ Anabel
 # git status  todos los archivos que han cambiado
 
 
+#pasos para guardar en git 
+#git status
+
+
 

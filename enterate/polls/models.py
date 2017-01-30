@@ -38,60 +38,68 @@ class Usuarios(models.Model):     #crea tabla
     contrasena = models.CharField(max_length=20)
     
     def __str__(self):
-        return self.choice_text
+        return self.nombre + " " +  self.apellido
         
 #Estacionamiento(RIF, nombre, Numero_de_puestos)        
 class Estacionamiento(models.Model):
-    rIF = models.CharField(max_length=20, primary_key = True)
-    nombre = models.CharField(max_length=200)
-    numero_de_puestos = models.IntegerField(default=1000)
+    RIF = models.CharField(max_length=20, primary_key = True)
+    Nombre = models.CharField(max_length=200)
+    Numero_de_puestos = models.IntegerField(default=1000)
+    Acceso_restringido = models.BooleanField(default=True)
     
     def __str__(self):
-        return self.choice_text
+        return self.RIF + " " + self.Nombre
         
-#vehiculos(placa,CEDULA,)   
+#vehiculos(Placa,CEDULA,)   
 class Vehiculos(models.Model):
-    cedula = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
-    placa =models.CharField(max_length=20, primary_key = True)
+    Cedula = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
+    Placa =models.CharField(max_length=20, primary_key = True)
     
     def __str__(self):
-        return self.choice_text
+        return self.Placa + " " + self.Cedula.__str__()
 
 # alertas(numero,tipo)
 class Alertas(models.Model):
-    numero_alertas = models.AutoField(primary_key = True) 
-    tipo = models.CharField(max_length=200)
+    Numero_alertas = models.AutoField(primary_key = True) # Deberiamos quitar esto o cambiarlo a IntegerField porque aunque se borre la BD igual queda el contador.
+    Tipo = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.Numero_alertas.__str__() + " " + self.Tipo 
     
 #Ocurre_a(Cedula,numero,fecha)
 class Ocurre_a(models.Model):
-    cedula_usuarios_en_alertas = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
-    numero_alertas = models.ForeignKey(Alertas, on_delete=models.CASCADE )
-    fecha_alertas    = models.DateTimeField('fecha de alerta')
+    Cedula_usuarios_en_alertas = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
+    Numero_alertas = models.ForeignKey(Alertas, on_delete=models.CASCADE )
+    Fecha_alertas    = models.DateTimeField('fecha de alerta')
     
     def __str__(self):
-        return self.choice_text
+        return self.Cedula_usuarios_en_alertas.__str__() + " " + self.Numero_alertas.__str__() + " " + self.Fecha_alertas.__str__()
         
 #Ocurre_en(RIF,numero,fecha)
 class Ocurre_en(models.Model):
-    rif = models.ForeignKey( Estacionamiento, on_delete=models.CASCADE) 
-    numero_alertas = models.ForeignKey( Alertas, on_delete=models.CASCADE)
-    fecha_alertas    = models.DateTimeField('fecha de alerta')
+    RIF = models.ForeignKey( Estacionamiento, on_delete=models.CASCADE) 
+    Numero_alertas = models.ForeignKey( Alertas, on_delete=models.CASCADE)
+    Fecha_alertas    = models.DateTimeField('fecha de alerta')
     
     def __str__(self):
-        return self.choice_text
+        return self.RIF.__str__() + " " + self.Numero_alertas.__str__() + " " + self.Fecha_alertas.__str__()
 
-#Ticket( placa, RIF,numero,hora_entrada, hora salida)
+#Ticket( Placa, RIF,numero,hora_entrada, hora salida)
 class Ticket(models.Model):
-    placa = models.ForeignKey(Vehiculos, on_delete=models.CASCADE) 
+    Placa = models.ForeignKey(Vehiculos, on_delete=models.CASCADE) 
     RIF = models.ForeignKey(Estacionamiento, on_delete=models.CASCADE)
     Numero_ticket = models.IntegerField(default=0)
     Hora_entrada =  models.DateTimeField('Hora de entrada')
     Hora_salida =  models.DateTimeField('Hora de salida')
+    Pagado = models.BooleanField(default=False) # Tiene que añadirse un valor por defecto cuandohay campos booleanos.
+    
     def __str__(self):
-        return self.choice_text
+        return self.Placa.__str__() + " " + self.RIF.__str__() + " " + self.Numero_ticket.__str__() + " " + self.Hora_entrada.__str__() + " " + self.Hora_salida.__str__() + " " + self.Pagado.__str__()
 
 # # GUSTOS(cédula, gusto_entrada, gusto_sal)
 # class Gustos(models.Model):
 #     cedula = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
 #     gusto_entrada = models.CharField(max_length=200)
 #     gusto_salida = models.CharField(max_length=200)
+
+
