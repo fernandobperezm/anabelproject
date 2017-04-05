@@ -31,4 +31,7 @@ Anabel
 #git status
 
 
+para la pagina web 
+
+python3 manage.py runserver 0.0.0.0:8080 
 

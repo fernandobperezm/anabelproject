@@ -15,4 +15,5 @@
 ### 1- Ejecutar: django-admin startproject $NombreProyecto.
 
 # El proyecto se corre: python manage.py runserver IP:Puerto
+# C9: python3 manage.py runserver 0.0.0.0:8080
 

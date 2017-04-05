@@ -1,0 +1,67 @@
+Este es un archivo de resumen para Anabel y Christian para que puedan entender
+la jerarquía y elementos de su proyecto.
+
+La jerarquía es la siguiente:
+anabel-project <- Carpeta raíz de todo el proyecto, guarda el proyecto, librerías, 
+                  archivos locales y archivos binarios.
+ - bin         <- Carpeta que tiene alojados archivos de configuración del django, python, entre otros. No se toca.
+ - lib         <- Carpeta que contiene la instalación de python. No tocar.
+ - local       <- Parece un respaldo de archivos locales, no se toca.
+ + enterate    <- Carpeta que contiene SU proyecto, llamado enterate.
+ 
+La carpeta más importante y la única que "deberían" modificar su contenido es enterate, 
+ésta es su jerarquía.
+
+enterate:
+ - db.sqlite3         <- NO es su base de datos, aquí iría un esquema de su base de datos si utilizaran SQLite
+                         sin embargo, ustedes usan PostgresQL que guarda la BD en el computador y no en un 
+                         archivo. No se toca.
+ - pip-selfcheck.json <- Es un archivo del manejador de paquetes PIP. No se toca.
+ - manage.py          <- Archivo que sirve para iniciar el proyecto. No se toca.
+ - bin                <- Idem, pero a nivel de las aplicaciones, no del projecto. No se toca.
+ - lib                <- Idem, pero a nivel de las aplicaciones, no del projecto. No se toca.
+ - local              <- Idem, pero a nivel de las aplicaciones, no del projecto. No se toca.
+ 
+ + enterate           <- Aplicación llamada enterate, contiene los archivos que harán funcionar la aplicación enterate.
+                         Si quieren añadir mas vistas, urls, o agregarle cosas a su aplicación, los archivos 
+                         probablemente van aquí :).
+ + polls              <- Aplicación llamada polls, contiene los archivos que harán funcionar la aplicación polls.
+                         Esta aplicación es del tutorial de django, la pueden borrar una vez dominen Django.
+ 
+De lo cual, las dos carpetas más importantes son "enterate" y "polls". La jerarquía
+de cada una es:
+
+enterate: (la aplicación)
+ - __init__.py        <- Un archivo de Python, porque Python es marico. No se toca.
+ - wsgi.py            <- Archivo para cuando quieran "montar" la aplicación en un 
+                         servidor de verdad. Por ahora no se toca.
+ + PruebaBD.py        <- Es un archivo de Python que hace inserciones, remociones, 
+                         actualizaciones y lectura de la BD para chequear que todo
+                         se hizo bien.
+ + urls.py            <- Este es su archivo principal de URLs, aquí se encontrarán
+                         todas las URLs de su aplicación (pueden cambiar la locación
+                         del archivo PERO tienen que cambiarlo también en settings)
+ + settings.py        <- Archivo de ajustes del proyecto, aquí ponen cuál es el 
+                         manejador de base de datos a usar, cuáles aplicaciones
+                         estarán usarán, cuál es el archivo principal para los
+                         url, dónde se encuentran los archivos estáticos (imágenes
+                         y esas cosas que no cambian), entre otros.
+                         
+                         
+polls:
+ - migrations         <- Carpeta que contiene las migraciones de la BD, i.e. los
+                         cambios al esquema (creaciones de tabla, modificaciones,
+                         remociones, entre otros). NO TOCAR.
+ - __init__.py        <- Un archivo de Python, porque Python es marico. No se toca.
+ - apps.py            <- Archivo que define esta aplicación. No se toca.
+ + admin.py           <- Archivo que añade cosas a la pagina web (admin) desde la base de datos. 
+ + test.py            <- Archivo para escribir pruebas de la página. Muy útil.
+ + urls.py            <- ESTE contiene los urls que ESTA aplicación (polls) 
+                         manejará.
+ + views.py           <- Este archivo contiene todas las respuestas a páginas
+                         web (views, vistas) que ESTA aplicación maneja.
+ + models.py          <- Archivo que contiene el esquema de la BD, esto es, 
+                         las tablas con sus distintos atributos, claves, entre otros.
+ 
+                        
+                  
