@@ -10,9 +10,6 @@ from django.db import models
 # https://docs.djangoproject.com/en/1.10/ref/models/fields/#django.db.models 
 # Referencia de todos los tipos.
 #migracion: actualizas las bases de datos, la forma o atributos, hasta nombres
-
-
-
 class Question(models.Model):     #crea tabla
     question_text = models.CharField(max_length=200) #crea las columnas
     pub_date = models.DateTimeField('date published')
