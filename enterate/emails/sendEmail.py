@@ -39,6 +39,7 @@ gmail_pwd = 'Anabel94'
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.ehlo()
 server.starttls() #Inicia el modo TLS transfer layer security - encriptar msg
+server.ehlo() # the docs says we need to call this function again.
 server.login(gmail_user, gmail_pwd)
 # server.sendmail(FROM, TO, message)
 server.send_message(msg)
