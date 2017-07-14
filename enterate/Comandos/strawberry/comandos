@@ -1,0 +1,17 @@
+#TOMAR FOTOGRAFÏA
+
+Raspistill –o NOMBRE.jpg
+
+#TOMAR UN VIDEO
+Raspivid –o video.h264 –t 1000
+# PARA SSH
+#Usuario: pi
+#Clave:  raspberry 
+#PARA REPRODUCIR VIDEOS
+omxplayer example.mp4
+
+
+
+
+
+
