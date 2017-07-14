@@ -4,6 +4,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    # LOS parentesis en la expresión (?P<question_id>[0-9]+). que lo que 
+    # Django haga match, por ejemplo: 52. Lo pasará como argumento a la vista.
     # ex: /polls/
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/
