@@ -35,7 +35,10 @@ class Usuarios(models.Model):     #crea tabla
     contrasena = models.CharField(max_length=20)
     
     def __str__(self):
-        return self.nombre + " " +  self.apellido
+        return self.nombre + " " +  self.apellido + " cedula: "+ self.cedula
+        
+    def usuario_con_telefono(self):
+        return self.nombre + " " + self.telefono
         
 #Estacionamiento(RIF, nombre, Numero_de_puestos)        
 class Estacionamiento(models.Model):
